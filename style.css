@@ -1,0 +1,198 @@
+@font-face {
+  font-family: "Conthrax";
+  src: url("./fonts/Conthrax-SemiBold.otf") format("opentype");
+  font-weight: normal; /* SemiBold is usually 600 */
+  font-style: normal;
+}
+
+
+body {
+    width: 100%;
+    background-color: #0D0D0D;
+    color: #FFFFFF;
+    font-family: "Conthrax", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+}
+
+
+.players {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    
+}
+
+.players > div {
+    flex: 1;
+}
+
+.human {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+.human-choices {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.choice, .comp-choice {
+    background-color: #FF0099;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    font-family: "Conthrax", sans-serif;
+    color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.choice img, .comp-choice img {
+    max-height: 200px;
+    width: auto;
+}
+
+.choice:active {
+    transform: translateY(4px);
+}
+
+.comp-choice:active {
+    transform: translateY(2px);
+
+}
+
+.computer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.score-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.score-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.left-side {
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.right-side {
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.score-bar p {
+    font-size: 18px;
+    margin: 20px;
+}
+
+.human-results,
+.comp-results {
+  display: flex;
+}
+
+.result {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.placeholder {
+    width: 100px;
+    height: auto;
+}
+
+.nexticon img{
+    width: 75px;
+    height: auto;
+}
+
+.nexticon {
+    margin: 0;
+    background-color: #00FF85;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.nexticon {
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.nexticon:active {
+    transform: translateY(4px);
+
+}
+
+
+
+/* body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100vh;
+  background: red;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 9999;
+} */
+
+/* .score-bar::after {
+  z-index: 0;  
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: black;
+  transform: translateX(-50%);
+  pointer-events: none;
+} */
+
+/* 
+.nexticon {
+  position: relative;
+}
+
+.nexticon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: red; /* change color if you want */
+  /*transform: translateX(-50%);
+  pointer-events: none;
+} */
