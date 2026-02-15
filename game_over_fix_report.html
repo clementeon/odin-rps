@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over & Reset Logic Fix Report</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { margin-top: 30px; color: #555; }
+        .comparison { display: flex; gap: 20px; margin-bottom: 20px; }
+        .box { flex: 1; border: 1px solid #ccc; border-radius: 8px; padding: 20px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .box h3 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; } 
+        .box h3.problem { color: #d32f2f; }
+        .box h3.solution { color: #388e3c; }
+        pre { background: #f5f5f5; padding: 15px; overflow-x: auto; border-radius: 4px; font-size: 0.9em; border: 1px solid #ddd; }
+        .explanation { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        code { background: #e3f2fd; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+        .note { font-style: italic; color: #666; margin-top: 50px; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Game Over & Reset Logic Fix Report</h1>
+    
+    <div class="explanation">
+        <h3>The Main Issue: NodeList vs. Element</h3>
+        <p>The variable <code>choices</code> is a <strong>NodeList</strong> (a list of elements), not a single button. Setting <code>choices.disabled = true</code> does nothing because the list itself doesn't have a disabled property—only the individual buttons inside it do.</p>
+        <p>This meant players could keep clicking buttons even after the game ended.</p>
+    </div>
+
+    <h2>1. Disabling Buttons at Game Over</h2>
+    <div class="comparison">
+        <div class="box">
+            <h3 class="problem">🔴 Before (Buggy)</h3>
+            <p>Tried to disable the list, which failed silently.</p>
+            <pre>if (wins == 5) {
+  choices.disabled = true; // Does nothing!
+}</pre>
+        </div>
+        <div class="box">
+            <h3 class="solution">🟢 After (Fixed)</h3>
+            <p>We iterate through every button in the list and disable them one by one.</p>
+            <pre>if (wins == 5) {
+  choices.forEach(c => c.disabled = true);
+}</pre>
+        </div>
+    </div>
+
+    <h2>2. Re-enabling Buttons on Reset</h2>
+    <div class="comparison">
+        <div class="box">
+            <h3 class="problem">🔴 Before</h3>
+            <p>The <code>resetGame()</code> function only removed the outlines but forgot to un-freeze the buttons.</p>
+            <pre>choices.forEach((choice) => {
+    choice.style.outline = "none";
+    // Buttons remained disabled
+})</pre>
+        </div>
+        <div class="box">
+            <h3 class="solution">🟢 After</h3>
+            <p>We explicitly set <code>disabled = false</code> so the game can be played again.</p>
+            <pre>choices.forEach((choice) => {
+    choice.style.outline = "none";
+    choice.disabled = false; // Back to normal
+})</pre>
+        </div>
+    </div>
+
+    <h2>3. Visual Feedback (Reset Icon)</h2>
+    <div class="comparison">
+        <div class="box">
+            <h3 class="problem">🔴 Before</h3>
+            <p>The center icon logic was missing or incomplete, meaning the user didn't see the "Reset" arrow clearly.</p>
+        </div>
+        <div class="box">
+            <h3 class="solution">🟢 After</h3>
+            <p>We explicitly swap the image source to the reset icon on Game Over, and back to the normal arrow on Reset.</p>
+            <pre>// On Game Over
+nextImg.src = IMAGES.reset;
+
+// On Reset
+nextImg.src = "img/next-icon.png";</pre>
+        </div>
+    </div>
+
+    <div class="note">
+        <p>The game now correctly "freezes" at 5 points and "unfreezes" when you click the reset button.</p>
+    </div>
+</body>
+</html>
