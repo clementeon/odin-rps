@@ -1,12 +1,13 @@
 @font-face {
-  font-family: "Conthrax";
-  src: url("./fonts/Conthrax-SemiBold.otf") format("opentype");
-  font-weight: normal; /* SemiBold is usually 600 */
-  font-style: normal;
+    font-family: "Conthrax";
+    src: url("./fonts/Conthrax-SemiBold.otf") format("opentype");
+    font-weight: normal;
+    /* SemiBold is usually 600 */
+    font-style: normal;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
@@ -29,10 +30,10 @@ body {
     flex-direction: column;
     gap: 50px;
     align-items: center;
-    
+
 }
 
-.players > div {
+.players>div {
     flex: 1;
 }
 
@@ -49,7 +50,8 @@ body {
     justify-content: space-evenly;
 }
 
-.choice, .comp-choice {
+.choice,
+.comp-choice {
     background-color: #FF0099;
     border-radius: 10px;
     display: flex;
@@ -64,7 +66,8 @@ body {
     border: none;
 }
 
-.choice img, .comp-choice img {
+.choice img,
+.comp-choice img {
     max-height: 200px;
     width: auto;
 }
@@ -92,7 +95,8 @@ body {
     align-items: center;
     margin-top: 20px;
     flex: 1;
-    padding: 0 20px; /* Add padding to prevent content from hitting the edges */
+    padding: 0 20px;
+    /* Add padding to prevent content from hitting the edges */
 }
 
 .score-side {
@@ -112,27 +116,31 @@ body {
     padding-left: 20px;
 }
 
-.score-bar p{
+.score-bar p {
     font-size: 18px;
     margin: 20px;
-    width: 120px; /* Fixed width to ensure symmetry */
+    width: 120px;
+    /* Fixed width to ensure symmetry */
     text-align: center;
 }
 
 .human-results,
 .comp-results {
-  display: flex;
-  flex: 1; /* Take up all remaining space */
-  justify-content: center; /* Center the results within their area */
-  gap: 10px;
+    display: flex;
+    flex: 1;
+    /* Take up all remaining space */
+    justify-content: center;
+    /* Center the results within their area */
+    gap: 10px;
 }
 
 .result {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  min-width: 0; /* Allows the container to shrink smaller than its content */
-  border-radius: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+    /* Allows the container to shrink smaller than its content */
+    border-radius: 100%;
 }
 
 .result img {
@@ -141,7 +149,7 @@ body {
     height: auto;
 }
 
-.nexticon img{
+.nexticon img {
     width: 75px;
     height: auto;
     padding: 5px;
@@ -174,14 +182,23 @@ body {
 }
 
 @keyframes blink {
-  0%   { box-shadow: 0 0 0 0px #00FF85; }
-  50%  { box-shadow: 0 0 15px 5px #00FF85; }
-  100% { box-shadow: 0 0 0 0px #00FF85; }
+    0% {
+        box-shadow: 0 0 0 0px #00FF85;
+    }
+
+    50% {
+        box-shadow: 0 0 15px 5px #00FF85;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0px #00FF85;
+    }
 }
 
 .winner-blink .result {
-  animation: blink 0.6s ease-in-out infinite;
+    animation: blink 0.6s ease-in-out infinite;
 }
+
 /* body::after {
   content: "";
   position: fixed;
@@ -221,7 +238,6 @@ body {
   width: 2px;
   height: 100%;
   background: red; /* change color if you want */
-  /*transform: translateX(-50%);
+/*transform: translateX(-50%);
   pointer-events: none;
 } */
-

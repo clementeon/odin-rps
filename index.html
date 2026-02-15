@@ -1,84 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ODIN RPS</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1 class="title">ROCK PAPER SCISSORS</h1>
     <div class="players">
-      <div class="human">
-        <h2 class="player-name">Your Hand</h2>
-        <div class="human-choices">
-          <button class="choice" id="rock">
-            <img src="img/odin-rock.png" />
-            <p>ROCK</p>
-          </button>
-          <button class="choice" id="paper">
-            <img src="img/odin-paper.png" />
-            <p>PAPER</p>
-          </button>
-          <button class="choice" id="scissor">
-            <img src="img/odin-scissor.png" />
-            <p>SCISSOR</p>
-          </button>
+        <div class="human">
+            <h2 class="player-name">Your Hand</h2>
+            <div class="human-choices">
+                <button class="choice" id="rock">
+                    <img src="img/odin-rock.png" />
+                    <p>ROCK</p>
+                </button>
+                <button class="choice" id="paper">
+                    <img src="img/odin-paper.png" />
+                    <p>PAPER</p>
+                </button>
+                <button class="choice" id="scissor">
+                    <img src="img/odin-scissor.png" />
+                    <p>SCISSOR</p>
+                </button>
+            </div>
+            <div class="computer">
+                <h2>Computer's Hand</h2>
+                <button class="comp-choice">
+                    <img src="img/odin-rock.png" id="comp-img" />
+                    <p id="comp-text">ROCK</p>
+                </button>
+            </div>
         </div>
-        <div class="computer">
-          <h2>Computer's Hand</h2>
-          <button class="comp-choice">
-            <img src="img/odin-rock.png" id="comp-img" />
-            <p id="comp-text">ROCK</p>
-          </button>
-        </div>
-      </div>
     </div>
     <div class="score-bar">
-      <div class="score-side left-side">
-        <p>YOU</p>
-        <div class="human-results">
-          <div class="result" data-index="1">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="2">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="3">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="4">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="5">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
+        <div class="score-side left-side">
+            <p>YOU</p>
+            <div class="human-results">
+                <div class="result" data-index="1">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="2">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="3">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="4">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="5">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+            </div>
         </div>
-      </div>
-      <button class="nexticon" id="continue">
-        <img src="img/restart-icon.png" />
-      </button>
-      <div class="score-side right-side">
-        <div class="comp-results">
-          <div class="result" data-index="5">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="4">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="3">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="2">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
-          <div class="result" data-index="1">
-            <img src="img/odin-rps-placeholder.png" />
-          </div>
+        <button class="nexticon" id="continue">
+            <img src="img/restart-icon.png" />
+        </button>
+        <div class="score-side right-side">
+            <div class="comp-results">
+                <div class="result" data-index="5">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="4">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="3">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="2">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+                <div class="result" data-index="1">
+                    <img src="img/odin-rps-placeholder.png" />
+                </div>
+            </div>
+            <p style="margin-right: 20px">COMPUTER</p>
         </div>
-        <p style="margin-right: 20px">COMPUTER</p>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>
