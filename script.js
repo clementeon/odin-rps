@@ -23,6 +23,8 @@ compVal.disabled = true;
 
 const next = document.querySelector(".nexticon")
 next.disabled = true;
+const img = document.querySelector('.nexticon img');
+
 
 const gamestate = {
     'userChoice' : 0,
@@ -50,6 +52,7 @@ choices.forEach((choice) => {
 // the imgaes to default
 // disables computer button and reset button
 function resetGame() {
+    removeHighlight();
     for(key in gamestate) {
         gamestate[key] = 0;
     }
@@ -66,8 +69,6 @@ function resetGame() {
         img.src = IMAGES.default;
         img.style.padding = "";
     });
-
-
     compVal.disabled = true;
     next.disabled = true;
 }
@@ -78,7 +79,6 @@ function resetGame() {
 //button are available
 compVal.addEventListener("click", () => {
     gamestate.compChoice = (Math.floor((Math.random() * 10)) % 3);
-    next.disabled = false;
     let temp = document.querySelector('#comp-img');
     let disc = document.querySelector('#comp-text');
     if (gamestate.compChoice == 0) {
@@ -93,18 +93,15 @@ compVal.addEventListener("click", () => {
         disc.textContent = `SCISSOR`;
     }
     playRound(gamestate.userChoice, gamestate.compChoice);
-    compVal.disabled = true;
-    choices.disabled = true;
-    next.disabled = false;
-    next.style.outline = "3px solid #ffffff"
-
     //at 5 wins, locks all butons except reset
     // resets the images and the gamestate
     if (gamestate.compWins == 5 || gamestate.userWins == 5) {
+        choices.disabled = true;
+        compVal.disabled = true;
+        next.disabled = false;
+        removeHighlight();
+        next.style.outline = "3px solid #FFFFFF"
 
-        const img = document.querySelector('.nexticon img');
-        img.src = IMAGES.reset;
-        img.style.padding = "5px";
     }
 })
 
@@ -127,7 +124,6 @@ next.addEventListener('click', () => {
 function playRound(humanChoice, computerChoice) {
     roundWin = (humanChoice - computerChoice + 3) % 3;
     if (roundWin == 1) {
-        console.log('human won')
         gamestate.userWins += 1;
         const img = document.querySelector(
             `.human-results [data-index="${gamestate.userWins}"] img`
@@ -157,4 +153,17 @@ function removeHighlight() {
         val.style.outline = "none";
     })
 }
-// playGame();
+// function highlightWinner() {
+//   const human = document.querySelector(".human-results");
+//   const computer = document.querySelector(".comp-results");
+
+//   human.classList.remove("winner-blink");
+//   computer.classList.remove("winner-blink");
+
+//   if (gamestate.userWins === 5) {
+//     human.classList.add("winner-blink");
+//   } else if (gamestate.compWins == 5) {
+//     computer.classList.add("winner-blink");
+//   }
+// }
+
